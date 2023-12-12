@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import pickle
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
@@ -119,7 +119,7 @@ def test(values):  # put application's code here
         if pred[0] == 4:
             results.append("Probe")
     print(results[0])
-    return render_template("result.html", forest=results[0], knn=results[1],adaboost=results[2])
+    return jsonify(forest=results[0], knn=results[1],adaboost=results[2])
 
 
 if __name__ == '__main__':
